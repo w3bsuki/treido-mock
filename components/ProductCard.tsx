@@ -11,21 +11,22 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) =>
   return (
     <div 
       onClick={onClick}
-      className="group cursor-pointer tap-highlight-transparent flex flex-col gap-3"
+      className="group cursor-pointer tap-highlight-transparent flex flex-col gap-2 p-2 rounded-lg hover:bg-zinc-50 transition-colors"
     >
-      {/* Image Container - No Scale Animation */}
-      <div className="relative aspect-square overflow-hidden rounded-lg bg-gray-100 transition-opacity active:opacity-95 duration-200">
+      {/* Image Container - Tighter Radius (rounded-md) */}
+      <div className="relative aspect-square overflow-hidden rounded-md bg-zinc-100 border border-zinc-100">
         <img
           src={product.imageUrl}
           alt={product.title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-95 group-hover:opacity-100 transition-opacity"
           loading="lazy"
         />
         
+        {/* Tags - Tighter (text-[9px]) */}
         {(product.tag || product.condition === 'New') && (
-          <div className="absolute bottom-2 left-2 flex gap-1 pointer-events-none">
+          <div className="absolute bottom-1.5 left-1.5 flex gap-1 pointer-events-none">
              {product.tag && (
-                <span className="bg-white/95 backdrop-blur-md text-gray-900 text-[10px] font-bold px-2 py-1 rounded shadow-sm leading-none flex items-center tracking-wide uppercase">
+                <span className="bg-white/90 backdrop-blur-sm text-zinc-900 text-[9px] font-bold px-1.5 py-0.5 rounded-sm border border-zinc-200/50 shadow-sm leading-none tracking-wide uppercase">
                   {product.tag}
                 </span>
              )}
@@ -33,36 +34,41 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) =>
         )}
         
         <button 
-          className="absolute top-2 right-2 p-2 bg-white/70 backdrop-blur-md rounded-full shadow-sm hover:bg-white transition-all"
+          className="absolute top-1.5 right-1.5 p-1.5 bg-white/80 backdrop-blur-md rounded-md border border-white/20 active:scale-95 transition-all"
           onClick={(e) => {
             e.stopPropagation();
             // handle favorite logic here
           }}
         >
           <Heart 
-            className={`w-[18px] h-[18px] transition-colors ${product.isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-900'}`} 
-            strokeWidth={1.5} 
+            className={`w-3.5 h-3.5 transition-colors ${product.isFavorite ? 'fill-red-500 text-red-500' : 'text-zinc-900'}`} 
+            strokeWidth={2} 
           />
         </button>
       </div>
 
-      {/* Content */}
-      <div className="space-y-1 px-0.5">
-        <div className="flex justify-between items-start gap-2">
-           <h3 className="text-[14px] font-normal text-gray-700 leading-snug line-clamp-2 min-h-[2.5em]">
-             {product.title}
-           </h3>
-        </div>
+      {/* Content - Dense */}
+      <div className="space-y-0.5 px-0.5">
+        <h3 className="text-[13px] font-medium text-zinc-900 leading-tight line-clamp-2 h-[2.4em]">
+           {product.title}
+        </h3>
 
-        <div className="flex items-baseline justify-between pt-1">
-           <p className="text-[16px] font-extrabold text-gray-900 tracking-tight leading-none">
-             {product.price}<span className="text-[14px] font-bold ml-0.5">{product.currency}</span>
-           </p>
+        <div className="flex items-baseline gap-1 pt-1">
+           <span className="text-[15px] font-bold text-zinc-900 tracking-tight">
+             {product.price}
+           </span>
+           <span className="text-[11px] font-bold text-zinc-500">{product.currency}</span>
         </div>
         
-        <p className="text-[11px] text-gray-400 truncate flex items-center gap-1.5 font-medium pt-0.5">
-            {product.location} • {product.postedAt}
-        </p>
+        <div className="flex items-center gap-1.5 pt-0.5">
+          <p className="text-[10px] text-zinc-400 font-medium truncate">
+              {product.location}
+          </p>
+          <span className="w-0.5 h-0.5 rounded-full bg-zinc-300"></span>
+          <p className="text-[10px] text-zinc-400 font-medium truncate">
+              {product.postedAt}
+          </p>
+        </div>
       </div>
     </div>
   );

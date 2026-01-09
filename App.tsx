@@ -10,7 +10,7 @@ import { ProductPage } from './components/ProductPage';
 import { FilterModal } from './components/FilterModal';
 import { SellPage } from './components/SellPage';
 import { SearchPage } from './components/SearchPage';
-import { ProfilePage } from './components/ProfilePage'; // Import new page
+import { ProfilePage } from './components/ProfilePage';
 import { PRODUCTS } from './constants';
 import { Product } from './types';
 
@@ -18,13 +18,11 @@ type ViewState = 'HOME' | 'CATEGORY' | 'PRODUCT' | 'SELL' | 'SEARCH' | 'CHAT' | 
 
 function App() {
   const [view, setView] = useState<ViewState>('HOME');
+  const [prevView, setPrevView] = useState<ViewState>('HOME');
   const [selectedCategory, setSelectedCategory] = useState<{id: string, name: string} | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  
-  // Filter state for Home
   const [isHomeFilterOpen, setIsHomeFilterOpen] = useState(false);
 
-  // Router Handlers
   const handleCategorySelect = (id: string, name: string) => {
     setSelectedCategory({ id, name });
     setView('CATEGORY');
@@ -33,6 +31,7 @@ function App() {
 
   const handleProductSelect = (product: Product) => {
     setSelectedProduct(product);
+    setPrevView(view);
     setView('PRODUCT');
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
@@ -42,15 +41,6 @@ function App() {
     setSelectedCategory(null);
     setSelectedProduct(null);
   };
-
-  const handleBackToCategory = () => {
-    if (selectedCategory) {
-      setView('CATEGORY');
-    } else {
-      setView('HOME');
-    }
-    setSelectedProduct(null);
-  };
   
   const handleNavClick = (newView: any) => {
       setView(newView);
@@ -58,9 +48,9 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F2F4F7] flex justify-center font-sans antialiased">
-      {/* Mobile Wrapper */}
-      <div className="w-full max-w-[430px] bg-white min-h-screen relative shadow-[0_0_50px_rgba(0,0,0,0.04)] pb-safe">
+    <div className="min-h-screen bg-zinc-100 flex justify-center font-sans antialiased text-zinc-900">
+      {/* Mobile Wrapper: Bordered, No Shadow, Zinc-50 background */}
+      <div className="w-full max-w-[430px] bg-white min-h-screen relative border-x border-zinc-200 pb-safe shadow-none">
         
         {/* VIEW: HOME */}
         {view === 'HOME' && (
@@ -71,25 +61,26 @@ function App() {
                onApply={() => setIsHomeFilterOpen(false)} 
             />
             
-            <div className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-gray-100/80 supports-[backdrop-filter]:bg-white/80">
+            <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-zinc-200 supports-[backdrop-filter]:bg-white/80">
               <Header />
               <CategoryStrip onSelect={handleCategorySelect} />
             </div>
 
             <main className="w-full pb-24">
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-4 mt-2">
                 <PromoBanner />
                 <FilterStrip onFilterClick={() => setIsHomeFilterOpen(true)} />
               </div>
 
               {/* Product Grid */}
-              <div className="px-4 mt-4">
-                <div className="flex items-end justify-between mb-4 px-1">
-                   <h2 className="text-[18px] font-bold text-gray-900 tracking-tight leading-none">Свежи обяви</h2>
-                   <button className="text-[12px] font-medium text-gray-500 hover:text-gray-900 transition-colors">Виж всички</button>
+              <div className="px-3 mt-6">
+                <div className="flex items-baseline justify-between mb-3 px-1">
+                   <h2 className="text-[15px] font-bold text-zinc-900 tracking-tight">Свежи обяви</h2>
+                   <button className="text-[12px] font-medium text-zinc-500 hover:text-zinc-900 transition-colors">Виж всички</button>
                 </div>
                 
-                <div className="grid grid-cols-2 gap-x-4 gap-y-8">
+                {/* Technical Grid: Gap-2, Tight */}
+                <div className="grid grid-cols-2 gap-2">
                   {PRODUCTS.map((product) => (
                     <ProductCard 
                       key={product.id} 
@@ -105,9 +96,7 @@ function App() {
 
         {/* VIEW: SEARCH */}
         {view === 'SEARCH' && (
-            <SearchPage onProductSelect={(p) => {
-                handleProductSelect(p);
-            }} />
+            <SearchPage onProductSelect={(p) => handleProductSelect(p)} />
         )}
 
         {/* VIEW: CATEGORY */}
@@ -124,12 +113,9 @@ function App() {
           <ProductPage 
             product={selectedProduct} 
             onBack={() => {
-                // If we have a selected category, go back there
                 if (selectedCategory) {
                     setView('CATEGORY');
-                } else if (view === 'SEARCH') {
-                    // Logic to maintain search history would go here, 
-                    // for now we fallback to Search view but state resets in this simple router
+                } else if (prevView === 'SEARCH') {
                     setView('SEARCH');
                 } else {
                     setView('HOME');
@@ -148,7 +134,7 @@ function App() {
            <ProfilePage />
         )}
 
-        {/* Persistent Bottom Nav (Hidden on Product/Sell pages) */}
+        {/* Persistent Bottom Nav */}
         {view !== 'PRODUCT' && view !== 'SELL' && (
             <BottomNav 
                 currentView={view}

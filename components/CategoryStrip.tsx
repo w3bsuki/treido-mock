@@ -16,10 +16,8 @@ export const CategoryStrip: React.FC<CategoryStripProps> = ({ onSelect }) => {
   };
 
   return (
-    // Clean component: No sticky, no background (handled by parent).
-    // pt-3 gives exactly the right breathing room below the search bar.
-    <div className="pt-3 pb-0">
-      <div className="flex overflow-x-auto no-scrollbar px-4 gap-6">
+    <div className="pt-2 pb-0">
+      <div className="flex overflow-x-auto no-scrollbar px-3 gap-5 border-b border-transparent">
         {CATEGORIES.map((cat) => {
           const isActive = activeId === cat.id;
           return (
@@ -29,13 +27,13 @@ export const CategoryStrip: React.FC<CategoryStripProps> = ({ onSelect }) => {
               className={`
                 flex-shrink-0 relative text-[13px] font-medium pb-2.5 transition-colors
                 ${isActive 
-                  ? 'text-gray-900' 
-                  : 'text-gray-500 hover:text-gray-900'}
+                  ? 'text-zinc-900' 
+                  : 'text-zinc-500 hover:text-zinc-700'}
               `}
             >
               {cat.name}
               {isActive && (
-                <span className="absolute bottom-0 left-0 w-full h-[2px] bg-gray-900 rounded-t-full"></span>
+                <span className="absolute bottom-0 left-0 w-full h-[2px] bg-zinc-900 rounded-t-full"></span>
               )}
             </button>
           );
