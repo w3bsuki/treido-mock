@@ -61,12 +61,12 @@ function App() {
                onApply={() => setIsHomeFilterOpen(false)} 
             />
             
-            <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-zinc-200 supports-[backdrop-filter]:bg-white/80">
+            <div className="sticky top-0 z-50 bg-white border-b border-zinc-200">
               <Header />
               <CategoryStrip onSelect={handleCategorySelect} />
             </div>
 
-            <main className="w-full pb-24">
+            <main className="w-full pb-[65px]">
               <div className="flex flex-col gap-4 mt-2">
                 <PromoBanner />
                 <FilterStrip onFilterClick={() => setIsHomeFilterOpen(true)} />

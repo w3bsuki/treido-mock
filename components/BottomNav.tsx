@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, Search, Plus, MessageSquare, User } from 'lucide-react';
+import { Home, Search, Plus, MessageCircle, User } from 'lucide-react';
 
 interface BottomNavProps {
   currentView: string;
@@ -9,8 +9,8 @@ interface BottomNavProps {
 
 export const BottomNav: React.FC<BottomNavProps> = ({ currentView, onNavClick, onSellClick }) => {
   return (
-    <nav className="fixed bottom-0 z-50 w-full max-w-[430px] mx-auto bg-white/90 backdrop-blur-xl border-t border-zinc-200 pb-safe">
-      <div className="grid grid-cols-5 items-center px-1 h-[52px]">
+    <nav className="fixed bottom-0 z-50 w-full max-w-[430px] mx-auto bg-white border-t border-zinc-200 pb-safe">
+      <div className="grid grid-cols-5 h-[48px] items-center">
         
         <NavItem 
            icon={<Home />} 
@@ -26,18 +26,21 @@ export const BottomNav: React.FC<BottomNavProps> = ({ currentView, onNavClick, o
            onClick={() => onNavClick('SEARCH')}
         />
         
-        {/* Sell Button - Technical "Chip" Style */}
-        <div className="flex items-center justify-center -mt-4">
+        {/* Sell Button - Dead Center via Grid 
+            34px Box ensures 7px padding top/bottom (48px container).
+            Perfect breathing room.
+        */}
+        <div className="flex items-center justify-center">
             <button 
               onClick={onSellClick}
-              className="flex items-center justify-center w-12 h-12 bg-zinc-900 rounded-full text-white shadow-lg shadow-zinc-200 active:scale-95 transition-transform border-4 border-white"
+              className="flex items-center justify-center w-[34px] h-[34px] bg-zinc-900 rounded-md text-white shadow-sm active:bg-zinc-800 transition-colors"
             >
-               <Plus className="w-6 h-6 stroke-[2]" />
+               <Plus className="w-5 h-5 stroke-[2.5]" />
             </button>
         </div>
 
         <NavItem 
-           icon={<MessageSquare />} 
+           icon={<MessageCircle />} 
            label="Чат" 
            isActive={currentView === 'CHAT'} 
            onClick={() => onNavClick('CHAT')}
@@ -63,12 +66,14 @@ const NavItem: React.FC<{
   return (
     <button 
       onClick={onClick}
-      className={`flex flex-col items-center justify-center gap-1 group active:opacity-50 transition-opacity p-1 w-full ${isActive ? 'text-zinc-900' : 'text-zinc-400 hover:text-zinc-600'}`}
+      className={`flex flex-col items-center justify-center gap-[2px] w-full h-full active:opacity-50 transition-opacity`}
     >
       {React.cloneElement(icon as React.ReactElement<any>, {
-         className: `w-[22px] h-[22px] transition-colors ${isActive ? 'stroke-[2] text-zinc-900' : 'stroke-[1.5] group-hover:stroke-zinc-600'}`
+         className: `w-[20px] h-[20px] transition-all ${isActive ? 'stroke-[2.5] text-zinc-900' : 'stroke-[1.5] text-zinc-400'}`
       })}
-      <span className={`text-[10px] tracking-tight leading-none ${isActive ? 'font-bold' : 'font-medium'}`}>{label}</span>
+      <span className={`text-[9px] font-medium leading-none tracking-tight ${isActive ? 'text-zinc-900 font-bold' : 'text-zinc-400'}`}>
+        {label}
+      </span>
     </button>
   );
 };

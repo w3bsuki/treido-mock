@@ -17,7 +17,7 @@ export const CategoryStrip: React.FC<CategoryStripProps> = ({ onSelect }) => {
 
   return (
     <div className="pt-2 pb-0">
-      <div className="flex overflow-x-auto no-scrollbar px-3 gap-5 border-b border-transparent">
+      <div className="flex overflow-x-auto no-scrollbar px-3 gap-3.5 border-b border-transparent">
         {CATEGORIES.map((cat) => {
           const isActive = activeId === cat.id;
           return (

@@ -20,10 +20,10 @@ export const SellPage: React.FC<SellPageProps> = ({ onClose }) => {
   return (
     <div className="bg-white min-h-screen pb-[90px] font-sans relative z-[60]">
       
-      {/* Header */}
+      {/* Header - 48px */}
       <div className="sticky top-0 z-40 bg-white border-b border-zinc-200">
         <div className="pt-safe-top">
-          <div className="flex items-center justify-between px-3 h-[52px]">
+          <div className="flex items-center justify-between px-3 h-[48px]">
             <button 
               onClick={onClose}
               className="w-8 h-8 flex items-center justify-center -ml-2 rounded-full active:bg-zinc-100 text-zinc-900"
@@ -39,7 +39,7 @@ export const SellPage: React.FC<SellPageProps> = ({ onClose }) => {
       </div>
 
       {/* Photos */}
-      <div className="py-5 border-b border-zinc-100">
+      <div className="py-4 border-b border-zinc-100">
         <div className="px-4 mb-2 flex items-center justify-between">
            <h3 className="text-[13px] font-bold text-zinc-900">Снимки</h3>
            <span className="text-[11px] text-zinc-500 font-medium">0/10</span>
@@ -48,14 +48,14 @@ export const SellPage: React.FC<SellPageProps> = ({ onClose }) => {
         <div className="flex overflow-x-auto no-scrollbar px-4 gap-2">
            <button 
              onClick={handleAddImage}
-             className="flex-shrink-0 w-[90px] h-[90px] border border-dashed border-zinc-300 rounded-md flex flex-col items-center justify-center gap-1 text-zinc-500 bg-zinc-50 active:bg-zinc-100 transition-all"
+             className="flex-shrink-0 w-[86px] h-[86px] border border-dashed border-zinc-300 rounded-md flex flex-col items-center justify-center gap-1 text-zinc-500 bg-zinc-50 active:bg-zinc-100 transition-all"
            >
               <Camera className="w-5 h-5 stroke-[1.5]" />
               <span className="text-[10px] font-bold">Добави</span>
            </button>
 
            {images.map((img, idx) => (
-             <div key={idx} className="relative flex-shrink-0 w-[90px] h-[90px] rounded-md overflow-hidden bg-zinc-100 border border-zinc-200">
+             <div key={idx} className="relative flex-shrink-0 w-[86px] h-[86px] rounded-md overflow-hidden bg-zinc-100 border border-zinc-200">
                <img src={img} alt="" className="w-full h-full object-cover" />
                <button 
                  onClick={() => removeImage(idx)}

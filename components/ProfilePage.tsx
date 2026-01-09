@@ -5,10 +5,10 @@ export const ProfilePage: React.FC = () => {
   return (
     <div className="min-h-screen bg-zinc-50 pb-[80px] font-sans">
       
-      {/* Header */}
+      {/* Header - 48px / px-3 */}
       <div className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-zinc-200">
         <div className="pt-safe-top">
-           <div className="h-[48px] px-4 flex items-center justify-between">
+           <div className="h-[48px] px-3 flex items-center justify-between">
               <h1 className="text-[16px] font-bold text-zinc-900">Профил</h1>
               <button className="p-2 -mr-2 text-zinc-900 active:opacity-50">
                  <Settings className="w-5 h-5 stroke-[1.5]" />
@@ -22,7 +22,7 @@ export const ProfilePage: React.FC = () => {
          <div className="bg-white rounded-xl border border-zinc-200 p-4 shadow-none">
             <div className="flex items-center gap-4">
                <div className="relative">
-                  <div className="w-[64px] h-[64px] rounded-full overflow-hidden border border-zinc-100 bg-zinc-100">
+                  <div className="w-[60px] h-[60px] rounded-full overflow-hidden border border-zinc-100 bg-zinc-100">
                      <img 
                        src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=200" 
                        alt="Profile" 
@@ -52,7 +52,7 @@ export const ProfilePage: React.FC = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-2 mt-5">
+            <div className="grid grid-cols-3 gap-2 mt-4">
                <div className="flex flex-col items-center justify-center p-2 bg-zinc-50 rounded-lg border border-zinc-100">
                   <span className="text-[16px] font-bold text-zinc-900">12</span>
                   <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wide">Активни</span>
@@ -87,8 +87,8 @@ export const ProfilePage: React.FC = () => {
          </div>
       </div>
 
-      {/* Menu Groups - Technical Card Style */}
-      <div className="px-3 space-y-4">
+      {/* Menu Groups */}
+      <div className="px-3 space-y-3">
          {/* Buying */}
          <div className="bg-white rounded-xl border border-zinc-200 overflow-hidden">
             <div className="px-4 py-2 border-b border-zinc-100 bg-zinc-50/50">
@@ -119,7 +119,7 @@ export const ProfilePage: React.FC = () => {
             </div>
              <div className="divide-y divide-zinc-100">
                <MenuItem icon={<HelpCircle />} label="Помощ и контакти" />
-               <div className="flex items-center gap-3 px-4 py-3.5 cursor-pointer active:bg-zinc-50 transition-colors">
+               <div className="flex items-center gap-3 px-4 py-3 cursor-pointer active:bg-zinc-50 transition-colors">
                   <LogOut className="w-[18px] h-[18px] text-red-500 stroke-[1.5]" />
                   <span className="text-[14px] font-medium text-red-500">Изход</span>
                </div>
@@ -137,7 +137,7 @@ export const ProfilePage: React.FC = () => {
 
 const MenuItem: React.FC<{ icon: React.ReactNode, label: string, badge?: string }> = ({ icon, label, badge }) => {
    return (
-      <div className="flex items-center justify-between px-4 py-3.5 cursor-pointer active:bg-zinc-50 transition-colors group">
+      <div className="flex items-center justify-between px-4 py-3 cursor-pointer active:bg-zinc-50 transition-colors group">
          <div className="flex items-center gap-3.5">
             {React.cloneElement(icon as React.ReactElement<any>, {
                className: "w-[18px] h-[18px] text-zinc-400 group-hover:text-zinc-900 transition-colors stroke-[1.5]"
