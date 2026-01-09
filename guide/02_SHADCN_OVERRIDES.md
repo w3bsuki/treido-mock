@@ -9,32 +9,36 @@
 
 *   **Radius:** `rounded-md` (6px).
 *   **Variants:**
-    *   `default`: `bg-primary text-primary-foreground shadow-none hover:opacity-90 active:scale-[0.98]`
+    *   `default`: `bg-primary text-primary-foreground shadow-none hover:opacity-90 active:scale-[0.98]` (Micro-interaction only)
     *   `outline`: `border border-border bg-background shadow-none hover:bg-accent hover:text-accent-foreground`
     *   `secondary`: `bg-secondary text-secondary-foreground shadow-none hover:bg-secondary/80`
+    *   `ghost`: `hover:bg-accent hover:text-accent-foreground`
 *   **Height:** `h-10` (40px) is the standard.
+*   **Focus:** Remove `ring-offset`. Use `focus-visible:ring-1 focus-visible:ring-ring`.
 
 ## 2. Input (`components/ui/input.tsx`)
 
-**Goal:** Structured data entry.
+**Goal:** Structured data entry. Distinct from the white surface.
 
-*   **Background:** `bg-secondary` (Zinc 50). This differentiates inputs from the white cards.
+*   **Background:** `bg-secondary` (Zinc 50/100). This differentiates inputs from white cards.
 *   **Border:** `border-transparent` -> Focus `border-ring`.
-*   **Radius:** `rounded-md`.
+*   **Radius:** `rounded-md` (6px).
 *   **Font Size:** `text-base` (16px) to prevent iOS zoom.
+*   **Height:** `h-11` or `h-12` for better touch area.
 
 ## 3. Card (`components/ui/card.tsx`)
 
 **Goal:** Data containment.
 
 *   **Container:** `rounded-md border border-border bg-card text-card-foreground shadow-none`.
-*   **Padding:** Remove default p-6. Use utility classes `p-4` inside the content.
+*   **Padding:** Remove default large padding. Use utility classes `p-3` or `p-4` directly in the implementation.
+*   **Shadow:** **FORBIDDEN**. Use Borders.
 
 ## 4. Sheet / Drawer
 
 *   **Mobile:** Use `vaul` (Drawer) style.
 *   **Corner:** `rounded-t-xl`.
-*   **Overlay:** `bg-black/40` backdrop blur.
+*   **Overlay:** `bg-black/40` backdrop blur (Standard iOS feel).
 
 ## 5. Separator
 

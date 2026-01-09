@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   ArrowLeft, Search, SlidersHorizontal, ChevronDown, ShoppingBag, 
   ArrowUpDown, X, Shirt, Footprints, Watch, Gamepad2, 
-  Baby, Package, Glasses, ChevronRight
+  Baby, Package, Glasses
 } from 'lucide-react';
 import { ProductCard } from './ProductCard';
 import { FilterModal } from './FilterModal';

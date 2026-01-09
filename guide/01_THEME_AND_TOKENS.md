@@ -24,44 +24,43 @@ In Tailwind v4, we do not use `tailwind.config.js` for colors. We use CSS variab
   
   /* Backgrounds */
   --background: 100% 0 0;              /* White */
-  --foreground: 20% 0.02 286;          /* Zinc 900 */
+  --foreground: 21.6% 0.006 270;       /* Zinc 950 */
 
   /* Surface Structure */
-  --card: 100% 0 0;
-  --card-foreground: 20% 0.02 286;
+  --card: 100% 0 0;                    /* White */
+  --card-foreground: 21.6% 0.006 270;  /* Zinc 950 */
   --popover: 100% 0 0;
-  --popover-foreground: 20% 0.02 286;
+  --popover-foreground: 21.6% 0.006 270;
 
   /* Brand / Interaction */
-  --primary: 20% 0.02 286;             /* Zinc 900 */
-  --primary-foreground: 98% 0 0;       /* White */
+  --primary: 21.6% 0.006 270;          /* Zinc 950 (Black-ish) */
+  --primary-foreground: 98.5% 0 0;     /* Zinc 50 */
 
-  --secondary: 96% 0.003 286;          /* Zinc 100 */
-  --secondary-foreground: 20% 0.02 286;
+  --secondary: 96.8% 0.001 270;        /* Zinc 50 */
+  --secondary-foreground: 21.6% 0.006 270;
 
-  --muted: 96% 0.003 286;
-  --muted-foreground: 55% 0.01 286;    /* Zinc 500 */
+  --muted: 96.8% 0.001 270;            /* Zinc 50 */
+  --muted-foreground: 55.2% 0.015 270; /* Zinc 500 */
 
-  --accent: 96% 0.003 286;             /* Hover States */
-  --accent-foreground: 20% 0.02 286;
+  --accent: 96.8% 0.001 270;           /* Zinc 50 (Hover) */
+  --accent-foreground: 21.6% 0.006 270;
 
   --destructive: 59% 0.20 22;          /* Red 600 */
-  --destructive-foreground: 98% 0 0;
+  --destructive-foreground: 98.5% 0 0;
 
   /* Boundaries */
-  --border: 92% 0.005 286;             /* Zinc 200 */
-  --input: 92% 0.005 286;
-  --ring: 20% 0.02 286;
+  --border: 92.5% 0.004 270;           /* Zinc 200 */
+  --input: 92.5% 0.004 270;            /* Zinc 200 */
+  --ring: 21.6% 0.006 270;
 
   /* Geometry - The "Technical" Radius */
   --radius: 0.375rem; /* 6px - The Sweet Spot */
 }
 
 .dark {
-  /* Dark Mode Mappings (Optional) */
-  --background: 20% 0.02 286;
-  --foreground: 98% 0 0;
-  /* ... etc ... */
+  /* Dark Mode Mappings (If needed later) */
+  --background: 21.6% 0.006 270;
+  --foreground: 98.5% 0 0;
 }
 
 @theme {
