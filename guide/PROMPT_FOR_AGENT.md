@@ -7,6 +7,7 @@
 Before writing a single line of code, you MUST ingest the following context:
 1.  `guide/MASTER_STYLE_GUIDE.md` (The Laws of Physics for this app)
 2.  `guide/COMPONENT_PATTERNS.md` (The Construction Blueprints)
+3.  `guide/04_UX_LOGIC_NAVIGATION.md` (The Logic for the Smart Nav)
 
 ---
 
@@ -16,6 +17,7 @@ We are building a tool, not a brochure.
 2.  **Borders > Shadows:** Shadows are messy. Borders are precise. Use `border-zinc-200`.
 3.  **The 48px Law:** Every touch target (Header, Input, Button) is exactly 48px or 44px.
 4.  **No Lag:** Interaction must feel instant (`active:opacity-70`). No bouncy spring animations.
+5.  **Smart Nav:** Use the "Morphing Row" pattern. Never stack multiple rows of tabs.
 
 **YOUR TASK:**
 Implement the requested feature using **Tailwind v4** and **Shadcn**.

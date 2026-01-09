@@ -15,6 +15,7 @@
     *   *Alternative:* Use `rounded-md` (6px) or `rounded-lg` (8px).
 *   ❌ **No "Floaty" Elements:** Things should feel attached to the grid.
 *   ❌ **No Bouncy Animations:** No `spring` or `bounce`. Use `duration-200 ease-out`.
+*   ❌ **No Stacking Headers:** Never stack more than 3 rows in the sticky header (App Header + Nav Row + Optional Filter). Ideally 2 rows.
 
 ### 🟢 The Patterns (ALWAYS DO THIS)
 *   ✅ **The "Zinc" Palette:**
@@ -64,7 +65,7 @@ Font: **Inter** (Variable).
 *   **Container Padding:** `px-3` (12px) is the standard horizontal padding.
 *   **Grid Gap:** `gap-2` (8px). Tighter than standard web design.
 *   **Section Spacing:** `py-3` or `py-4`.
-*   **Sticky Header:** Always `sticky top-0 z-40 bg-white/95 backdrop-blur-md`.
+*   **Sticky Header:** Always `sticky top-0 z-40 bg-white shadow-sm`.
 *   **Fixed Footer:** Always `fixed bottom-0 w-full bg-white border-t border-zinc-200 pb-safe`.
 
 ---

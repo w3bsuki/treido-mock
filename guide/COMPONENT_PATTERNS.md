@@ -2,48 +2,44 @@
 
 These are the "Blueprints" for complex UI elements. Copy these structures exactly.
 
-## 1. THE "DOUBLE DECKER" NAVIGATION (Focus Mode)
+## 1. THE "SMART ANCHOR" NAVIGATION (Unified Row)
 
-**Problem:** Deep navigation (Category -> Subcategory) cramps the screen if put on one row.
-**Solution:** Split into **Context Row** (Where I am) and **Options Row** (Where I can go).
+**Problem:** Deep navigation (Gender -> Category -> Subcategory) usually requires multiple stacked rows, taking up too much vertical space.
+**Solution:** A single "Morphing Row" that contains both the "Back" button (Anchor) and the "Next Options" (Siblings).
+
+**Visual Structure:**
+1.  **Anchor (Left):** A solid black pill that acts as the Back button for the current context.
+2.  **Siblings (Right):** A scrollable list of white pills for the next level options.
 
 ```tsx
 <div className="sticky top-0 z-40 bg-white border-b border-zinc-200">
   
-  {/* LEVEL 1: GLOBAL HEADER (48px) */}
+  {/* ROW 1: GLOBAL HEADER (48px) */}
   <div className="flex items-center justify-between px-3 h-[48px]">
      {/* Back Button, Title, Search */}
   </div>
 
-  {/* LEVEL 2: NAVIGATION AREA (Variable) */}
-  {isDeepMode ? (
-      <div className="flex flex-col">
-          {/* ROW A: CONTEXT STACK (The "Path") */}
-          <div className="px-3 py-2 bg-zinc-50 border-b border-zinc-100 flex items-center gap-2">
-             <Button variant="outline" size="sm">
-                <Icon /> Parent Category
-             </Button>
-             <ChevronRight className="text-zinc-300" />
-             <Button variant="solid" size="sm">
-                Current Category
-             </Button>
-          </div>
+  {/* ROW 2: SMART NAV ROW (48px) - BG Zinc-50 */}
+  <div className="bg-zinc-50/90 backdrop-blur-md border-b border-zinc-200">
+      <div className="flex items-center px-3 h-[48px] gap-2 overflow-x-auto no-scrollbar">
+          
+          {/* A. THE ANCHOR (Only shows if depth > 0) */}
+          {/* Visual: Black Background, White Text, Arrow Left */}
+          {hasParent && (
+             <button className="flex-shrink-0 h-[32px] pl-2 pr-3.5 bg-zinc-900 text-white rounded-full flex items-center gap-1.5 shadow-sm">
+                <ArrowLeft className="w-3.5 h-3.5 stroke-[3]" />
+                <span className="text-[13px] font-bold">{parentName}</span>
+             </button>
+          )}
 
-          {/* ROW B: OPTIONS DECK (The "Choices") - Full Width */}
-          <div className="px-3 py-2.5 bg-white overflow-x-auto">
-             {/* Horizontal Scroll of Pills */}
-             <Button>Subcategory 1</Button>
-             <Button>Subcategory 2</Button>
-          </div>
+          {/* B. THE OPTIONS (Siblings) */}
+          {/* Visual: White Background, Border Zinc-200 */}
+          {currentOptions.map(opt => (
+             <button className="whitespace-nowrap h-[32px] px-4 bg-white border border-zinc-200 rounded-full text-[13px] font-semibold text-zinc-600">
+                {opt.name}
+             </button>
+          ))}
       </div>
-  ) : (
-      /* Standard Mode: Gender Tabs + Circle Icons */
-      <div>...</div>
-  )}
-
-  {/* LEVEL 3: FILTER BAR (40px) */}
-  <div className="h-[40px] px-3 border-t border-zinc-200 bg-zinc-50/50">
-     {/* Sort, Filter Buttons */}
   </div>
 </div>
 ```
