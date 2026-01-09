@@ -10,6 +10,7 @@ interface ProductPageProps {
 
 export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack }) => {
   const [activeImage, setActiveImage] = useState(0);
+  const [isExpanded, setIsExpanded] = useState(false);
   
   const images = [product.imageUrl, product.imageUrl, product.imageUrl];
   const specs = {
@@ -21,6 +22,15 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack }) => 
   };
 
   const moreFromSeller = PRODUCTS.filter(p => p.id !== product.id).slice(0, 4);
+
+  // Mock description if missing, to demonstrate the UI
+  const descriptionText = product.description || `Продавам телефона, защото си взех по-нов модел. Работи перфектно, без драскотини по екрана. Винаги е носен с калъф и протектор.\n\nБатерията е на 89% живот. Идва с оригиналната кутия и кабел за зареждане. Няма iCloud заключване и работи с всички оператори.\n\nМоже да се види и тества на място в София. За страната изпращам с Еконт/Спиди с опция преглед и тест. Бартери не ме интересуват. Цената е крайна.`;
+  
+  const TRUNCATE_LENGTH = 150;
+  const shouldTruncate = descriptionText.length > TRUNCATE_LENGTH;
+  const displayedText = !isExpanded && shouldTruncate 
+    ? descriptionText.slice(0, TRUNCATE_LENGTH) + '...' 
+    : descriptionText;
 
   return (
     <div className="bg-white min-h-screen pb-[70px] font-sans relative z-50">
@@ -142,13 +152,22 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack }) => 
         </div>
       </div>
 
-      {/* 7. Description */}
+      {/* 7. Description (Enhanced) */}
       <div className="px-4 py-4 border-b border-gray-100">
         <h3 className="text-[14px] font-bold text-gray-900 mb-2">Описание</h3>
-        <p className="text-[13px] text-gray-600 leading-relaxed">
-          Продавам телефона, защото си взех по-нов модел. Работи перфектно, без драскотини по екрана. Винаги е носен с калъф и протектор.
-        </p>
-        <button className="text-[13px] font-medium text-gray-900 mt-1 underline decoration-gray-300 underline-offset-4">Още</button>
+        <div className="relative">
+          <p className="text-[13px] text-gray-600 leading-relaxed whitespace-pre-line">
+            {displayedText}
+          </p>
+          {shouldTruncate && (
+            <button 
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="text-[13px] font-bold text-gray-900 mt-2 underline decoration-gray-300 underline-offset-4 active:text-gray-600 transition-colors"
+            >
+              {isExpanded ? 'Скрий' : 'Още'}
+            </button>
+          )}
+        </div>
       </div>
 
       {/* 8. More from Seller */}
