@@ -1,49 +1,42 @@
 # 02. Shadcn Component Overrides (Technical/Tight)
 
 **Role:** Frontend Architect
-**Context:** Overriding Shadcn defaults to achieve a "Technical/Industrial" aesthetic with reduced rounding and tighter hit-boxes.
+**Context:** Instructions for overriding Shadcn defaults. When you install a Shadcn component, modify the code immediately to match these rules.
 
 ## 1. Button (`components/ui/button.tsx`)
 
-**Design Goal:** Rectangular, precise, tactile.
+**Goal:** Rectangular, precise, tactile. No "pill" shapes for default buttons.
 
-*   **Radius:** `rounded-md` (6px) or `rounded-sm` (4px). Never `rounded-full` (except icons).
-*   **Height:** Keep `h-10` or `h-11` for density.
-*   **Styling:** 
-    *   `font-medium`
-    *   `tracking-tight`
-    *   `active:translate-y-[1px]` (Mechanical click feel)
-
-```tsx
-// Variant: Outline (Technical)
-"border border-input bg-background hover:bg-accent hover:text-accent-foreground"
-```
+*   **Radius:** `rounded-md` (6px).
+*   **Variants:**
+    *   `default`: `bg-primary text-primary-foreground shadow-none hover:opacity-90 active:scale-[0.98]`
+    *   `outline`: `border border-border bg-background shadow-none hover:bg-accent hover:text-accent-foreground`
+    *   `secondary`: `bg-secondary text-secondary-foreground shadow-none hover:bg-secondary/80`
+*   **Height:** `h-10` (40px) is the standard.
 
 ## 2. Input (`components/ui/input.tsx`)
 
-**Design Goal:** Structured data entry.
+**Goal:** Structured data entry.
 
-*   **Background:** `bg-secondary/50` (Very subtle grey).
-*   **Border:** `border-input`.
-*   **Radius:** `rounded-md` (6px).
-*   **Text:** `text-sm` or `text-base` (depending on device).
+*   **Background:** `bg-secondary` (Zinc 50). This differentiates inputs from the white cards.
+*   **Border:** `border-transparent` -> Focus `border-ring`.
+*   **Radius:** `rounded-md`.
+*   **Font Size:** `text-base` (16px) to prevent iOS zoom.
 
 ## 3. Card (`components/ui/card.tsx`)
 
-**Design Goal:** Data containment units.
+**Goal:** Data containment.
 
-*   **Shadow:** **NONE.** `shadow-none`.
-*   **Border:** `border border-border`.
-*   **Radius:** `rounded-lg` (6px).
-*   **Spacing:** Reduce default padding. Use `p-4` instead of `p-6`.
+*   **Container:** `rounded-md border border-border bg-card text-card-foreground shadow-none`.
+*   **Padding:** Remove default p-6. Use utility classes `p-4` inside the content.
 
-## 4. Badge / Tag
+## 4. Sheet / Drawer
 
-*   **Radius:** `rounded-sm` (2px - very square).
-*   **Text:** `uppercase text-[10px] tracking-wider`.
-*   **Padding:** `px-1.5 py-0.5`.
+*   **Mobile:** Use `vaul` (Drawer) style.
+*   **Corner:** `rounded-t-xl`.
+*   **Overlay:** `bg-black/40` backdrop blur.
 
 ## 5. Separator
 
 *   **Color:** `bg-border`.
-*   **Usage:** Use frequently to delineate sections in high-density layouts.
+*   **Usage:** Use frequently to divide lists instead of massive whitespace.

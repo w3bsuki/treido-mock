@@ -11,6 +11,118 @@ export const CATEGORIES: Category[] = [
   { id: 'properties', name: 'Имоти' },
 ];
 
+export const FASHION_GROUPS = [
+    { id: 'women', name: 'Жени' },
+    { id: 'men', name: 'Мъже' },
+    { id: 'kids', name: 'Деца' },
+];
+
+// Deep Hierarchy: Gender -> Department -> Category
+export const FASHION_TREE: Record<string, { id: string; name: string; items: { id: string; name: string }[] }[]> = {
+  women: [
+    {
+      id: 'clothing',
+      name: 'Дрехи',
+      items: [
+        { id: 'dresses', name: 'Рокли' },
+        { id: 'tops', name: 'Блузи & Ризи' },
+        { id: 'pants', name: 'Панталони & Дънки' },
+        { id: 'skirts', name: 'Поли' },
+        { id: 'outerwear', name: 'Якета & Палта' },
+        { id: 'sport', name: 'Спортни' },
+      ]
+    },
+    {
+      id: 'shoes',
+      name: 'Обувки',
+      items: [
+        { id: 'sneakers', name: 'Сникърси' },
+        { id: 'boots', name: 'Боти & Ботуши' },
+        { id: 'heels', name: 'Токове' },
+        { id: 'sandals', name: 'Сандали' },
+        { id: 'sport_shoes', name: 'Спортни обувки' },
+      ]
+    },
+    {
+      id: 'bags',
+      name: 'Чанти',
+      items: [
+        { id: 'handbags', name: 'Дамски чанти' },
+        { id: 'backpacks', name: 'Раници' },
+        { id: 'wallets', name: 'Портмонета' },
+      ]
+    },
+    {
+      id: 'accessories',
+      name: 'Аксесоари',
+      items: [
+        { id: 'jewelry', name: 'Бижута' },
+        { id: 'watches', name: 'Часовници' },
+        { id: 'sunglasses', name: 'Слънчеви очила' },
+        { id: 'hats', name: 'Шапки & Шалове' },
+      ]
+    }
+  ],
+  men: [
+    {
+      id: 'clothing',
+      name: 'Дрехи',
+      items: [
+        { id: 'tshirts', name: 'Тениски' },
+        { id: 'hoodies', name: 'Суичъри' },
+        { id: 'pants', name: 'Панталони' },
+        { id: 'jeans', name: 'Дънки' },
+        { id: 'suits', name: 'Костюми' },
+      ]
+    },
+    {
+      id: 'shoes',
+      name: 'Обувки',
+      items: [
+        { id: 'sneakers', name: 'Сникърси' },
+        { id: 'boots', name: 'Боти' },
+        { id: 'formal', name: 'Официални' },
+        { id: 'slippers', name: 'Джапанки' },
+      ]
+    },
+    {
+      id: 'accessories',
+      name: 'Аксесоари',
+      items: [
+        { id: 'watches', name: 'Часовници' },
+        { id: 'belts', name: 'Колани' },
+        { id: 'hats', name: 'Шапки' },
+      ]
+    }
+  ],
+  kids: [
+    {
+      id: 'girls',
+      name: 'Момичета',
+      items: [
+         { id: 'clothing', name: 'Дрехи' },
+         { id: 'shoes', name: 'Обувки' }
+      ]
+    },
+    {
+      id: 'boys',
+      name: 'Момчета',
+      items: [
+         { id: 'clothing', name: 'Дрехи' },
+         { id: 'shoes', name: 'Обувки' }
+      ]
+    },
+    {
+       id: 'toys',
+       name: 'Играчки',
+       items: [
+          { id: 'educational', name: 'Образователни' },
+          { id: 'outdoor', name: 'За навън' }
+       ]
+    }
+  ]
+};
+
 export const SUB_CATEGORIES = [
   { id: 'all', name: 'Всички' },
   { id: 'shoes', name: 'Обувки' },

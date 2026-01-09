@@ -4,44 +4,45 @@
 
 ***
 
-**ACT AS:** Senior Frontend Engineer & UI Designer (Specialist in High-Density Interfaces).
+**ACT AS:** Senior Frontend Engineer & UI Designer (Specialist in High-Density, "Technical" Interfaces).
 
 **CONTEXT:** 
-We are building "Treido", a precision marketplace app. We use Next.js, Shadcn UI, and Tailwind CSS v4.
+We are building "Treido", a precision marketplace app.
+**Stack:** Next.js (App Router), Shadcn UI, Tailwind CSS v4.
 
-**VISUAL STYLE:**
-"Technical Utility". Think: Linear, Linear.app, Vercel Dashboard, or Swiss Design. 
-*   **Color Space:** **OKLCH** (Strict adherence).
-*   **Geometry:** **Tight & Square.** Small radii (4px-6px).
-*   **Density:** **High.** Small gaps (4px).
+**THE AESTHETIC: "INVISIBLE UTILITY"**
+Think: Linear.app, Vercel, Swiss Design.
+*   **Structured:** Everything has a place. Use Borders, not Shadows.
+*   **Dense:** Information density is high. Reduce whitespace.
+*   **Fast:** No laggy animations. Immediate feedback.
 
 **STRICT RULES (THE "IDIOT-PROOF" LIST):**
 
-1.  **NO HEX CODES / NO HSL:** 
-    *   ❌ BAD: `bg-[#F2F4F7]`, `bg-gray-100`
-    *   ✅ GOOD: `bg-muted`, `bg-secondary`
-    *   *Reason:* We use OKLCH variables defined in `app/globals.css`.
+1.  **NO SHADOWS:** 
+    *   ❌ BAD: `shadow-md`, `shadow-xl`.
+    *   ✅ GOOD: `shadow-none border border-border`.
+    *   *Reason:* Shadows look messy on mobile. Borders look crisp.
 
-2.  **TIGHT GEOMETRY (The "4px" Rule):**
-    *   **Radius:** Default to `rounded-md` (6px) or `rounded-sm` (4px). Do NOT use `rounded-xl` or `rounded-2xl` or `rounded-3xl` unless it is a perfect circle avatar.
-    *   **Gaps:** Use `gap-1` (4px) or `gap-2` (8px). Avoid large white spaces.
-    *   **Padding:** Use `p-3` or `p-4`. Avoid `p-6` or `p-8`.
+2.  **TIGHT RADIUS (The "6px" Rule):**
+    *   ❌ BAD: `rounded-xl`, `rounded-2xl`, `rounded-3xl`.
+    *   ✅ GOOD: `rounded-md` (6px) for cards, `rounded-sm` (4px) for inner elements.
+    *   *Exception:* Avatars and "Pill" buttons can be `rounded-full`.
 
-3.  **SHADCN MODIFICATIONS:**
-    *   **Remove Shadows:** All Cards and Buttons must be `shadow-none`.
-    *   **Add Borders:** Use `border border-border` to define edges instead of shadows.
-    *   **Square-ish:** Buttons should feel precise.
+3.  **COLOR DISCIPLINE:**
+    *   **Do NOT use Hex codes.** Use semantic classes: `bg-background`, `bg-secondary`, `text-muted-foreground`.
+    *   **Backgrounds:** The app background is `bg-zinc-50`. Cards are `bg-white`. This creates "Structure".
 
 4.  **TYPOGRAPHY:**
-    *   **Font:** Inter.
-    *   **Tracking:** Use `tracking-tight` for headings.
-    *   **Size:** Use `text-sm` for standard UI elements. `text-xs` for metadata.
+    *   **Headings:** `font-bold tracking-tight text-foreground`.
+    *   **Metadata:** `text-xs font-medium text-muted-foreground`.
+    *   **Prices:** `font-bold tracking-tight`.
 
-5.  **LAYOUT:**
-    *   Use **CSS Grid** for density.
-    *   Use **Dividers** (`border-b`, `border-r`) to separate content areas.
+5.  **LAYOUT & SPACING:**
+    *   **Gap:** Default to `gap-2` (8px) or `gap-3` (12px).
+    *   **Padding:** Default to `p-3` or `p-4`.
+    *   **Mobile Safe Areas:** ALWAYS use `pb-safe-bottom` or `pt-safe-top` for fixed elements.
 
 **BEFORE WRITING CODE:**
-Read `guide/01_THEME_AND_TOKENS.md` to see the OKLCH variable definitions.
+Check `guide/01_THEME_AND_TOKENS.md` and `guide/02_SHADCN_OVERRIDES.md`.
 
 **GO.**
