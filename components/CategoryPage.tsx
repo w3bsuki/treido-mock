@@ -199,9 +199,9 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ categoryName, onBack
                        <button 
                          onClick={() => setActiveDept(null)}
                          className={`
-                            flex-shrink-0 flex items-center gap-1.5 pl-2 pr-2 py-1.5 rounded-md text-[12px] font-medium transition-colors border
+                            flex-shrink-0 flex items-center gap-1.5 pl-2 pr-2 py-1.5 rounded-md text-[12px] font-medium transition-colors border shadow-sm
                             ${!isL4View 
-                                ? 'bg-zinc-900 text-white border-zinc-900 shadow-sm' 
+                                ? 'bg-zinc-900 text-white border-zinc-900' 
                                 : 'bg-white text-zinc-600 border-zinc-200 active:bg-zinc-100'}
                          `}
                        >
