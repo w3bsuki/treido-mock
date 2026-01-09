@@ -11,6 +11,16 @@ export interface Product {
   location: string;
   condition: 'New' | 'Like New' | 'Good' | 'Used';
   postedAt: string;
+  // Extended fields for Product Page
+  description?: string;
+  seller?: {
+    name: string;
+    rating: number;
+    reviews: number;
+    isVerified: boolean;
+    avatarUrl: string;
+  };
+  specs?: Record<string, string>;
 }
 
 export interface Category {

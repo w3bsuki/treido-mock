@@ -11,6 +11,16 @@ export const CATEGORIES: Category[] = [
   { id: 'properties', name: 'Имоти' },
 ];
 
+export const SUB_CATEGORIES = [
+  { id: 'all', name: 'Всички' },
+  { id: 'shoes', name: 'Обувки' },
+  { id: 'clothes', name: 'Дрехи' },
+  { id: 'accessories', name: 'Аксесоари' },
+  { id: 'watches', name: 'Часовници' },
+  { id: 'bags', name: 'Чанти' },
+  { id: 'jewelry', name: 'Бижута' },
+];
+
 export const FILTERS: Filter[] = [
   { id: 'promoted', label: 'Промо' },
   { id: 'nearby', label: 'Близо до мен' },

@@ -4,8 +4,8 @@ import { ArrowRight } from 'lucide-react';
 export const PromoBanner: React.FC = () => {
   return (
     <div className="px-4 pt-4">
-      {/* Dark Theme Banner - rounded-md matches products */}
-      <div className="group relative overflow-hidden bg-gray-900 rounded-md p-5 shadow-sm active:scale-[0.99] transition-all duration-200 cursor-pointer">
+      {/* Dark Theme Banner - No Scale */}
+      <div className="group relative overflow-hidden bg-gray-900 rounded-md p-5 shadow-sm active:opacity-95 transition-all duration-200 cursor-pointer">
         <div className="flex items-center justify-between relative z-10">
           <div className="space-y-1.5">
             <h2 className="text-[16px] font-bold text-white tracking-tight leading-none">Продай за минути</h2>

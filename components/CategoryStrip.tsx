@@ -1,8 +1,19 @@
 import React, { useState } from 'react';
 import { CATEGORIES } from '../constants';
 
-export const CategoryStrip: React.FC = () => {
+interface CategoryStripProps {
+  onSelect?: (id: string, name: string) => void;
+}
+
+export const CategoryStrip: React.FC<CategoryStripProps> = ({ onSelect }) => {
   const [activeId, setActiveId] = useState('all');
+
+  const handleSelect = (id: string, name: string) => {
+    setActiveId(id);
+    if (onSelect && id !== 'all') {
+      onSelect(id, name);
+    }
+  };
 
   return (
     // Clean component: No sticky, no background (handled by parent).
@@ -14,7 +25,7 @@ export const CategoryStrip: React.FC = () => {
           return (
             <button
               key={cat.id}
-              onClick={() => setActiveId(cat.id)}
+              onClick={() => handleSelect(cat.id, cat.name)}
               className={`
                 flex-shrink-0 relative text-[13px] font-medium pb-2.5 transition-colors
                 ${isActive 
