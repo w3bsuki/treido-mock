@@ -6,36 +6,40 @@
 ## 1. Core Principles
 
 ### A. The "No Scale" Rule
-*   **Forbidden:** Do NOT use `active:scale-95` or bouncy animations.
-*   **Required:** Use `active:opacity-70` or `active:bg-gray-100` for touch feedback.
-*   **Reasoning:** Scale animations feel "webby" and slow. Opacity/Color changes feel "native" and instant.
+*   **Forbidden:** Do NOT use bouncy `scale-90` animations for main navigation.
+*   **Required:** Use `active:opacity-70` or `active:bg-zinc-100` for touch feedback.
+*   **Reasoning:** Scale animations feel "webby". Opacity changes feel "native" (iOS style).
 
 ### B. The "Border Over Shadow" Rule
 *   **Forbidden:** Deep drop shadows (`shadow-xl`, `shadow-2xl`) for cards.
-*   **Required:** Use 1px borders (`border border-gray-100` or `border-gray-200`).
-*   **Reasoning:** Flat designs with distinct borders are easier to scan on mobile screens than elevated cards.
+*   **Required:** Use 1px borders (`border border-zinc-200`).
+*   **Reasoning:** Flat designs with distinct borders are easier to scan on mobile screens.
 
-### C. The "No Glass" Rule (New)
-*   **Forbidden:** `backdrop-blur`, `bg-white/80`.
-*   **Required:** `bg-white` (Solid Opaque).
-*   **Reasoning:** Glassmorphism causes rendering issues, accessibility contrast problems, and feels dated (2021 era). Professional apps use solid command strips.
+### C. The "48px Rhythm" (New)
+*   **Strict Rule:** All Headers and Bottom Navigation bars must be exactly `h-[48px]`.
+*   **Reasoning:** 48px is the perfect touch target size and creates vertical symmetry.
 
 ## 2. Navigation Patterns
 
-### A. The "Command Strip" Bottom Nav
-*   **No Floating:** The bottom nav must be `w-full`, fixed to the bottom, with a solid white background and a top border.
-*   **No "Popped" Buttons:** Do not use negative margins to make buttons float above the bar.
-*   **Alignment:** Icons must be perfectly vertically centered. Use Flexbox `items-center`.
+### A. "Double Decker" Focus Mode (Deep Hierarchy)
+When a user selects a category, **split the UI**:
+1.  **Row 1 (Context):** A dedicated row for "Back" and "Current Category".
+2.  **Row 2 (Options):** A dedicated full-width row for the *next* choices.
+*   **Why:** Prevents cramping. "Back" buttons should not fight for space with "Next" buttons.
+
+### B. The "Command Strip" Bottom Nav
+*   **No Floating:** The bottom nav must be `w-full`, fixed to the bottom, solid white.
+*   **Center Button:** The "Sell" button can be distinct (e.g., black square `w-[34px]`) but must fit within the grid.
 
 ## 3. Typography & Density
-*   **Font:** Inter or San Francisco.
+*   **Font:** Inter.
 *   **Sizes:** 
-    *   `text-[11px]` + Uppercase + Bold for Labels (Metadata).
-    *   `text-[16px]` for Body (prevents iOS zoom on inputs).
-    *   `text-[22px]`+ for Prices/Headlines.
-*   **Spacing:** Tighten gaps. Use `gap-2` or `gap-3` by default. Avoid `gap-6` or `gap-8` unless separating major sections.
+    *   `text-[10px]` + Uppercase + Bold for Labels.
+    *   `text-[16px]` for Body/Inputs.
+    *   `text-[22px]`+ for Prices.
+*   **Spacing:** Tighten gaps. `gap-2` (8px) is the default unit.
 
 ## 4. Mobile Ergonomics
-*   **Touch Targets:** Minimum height `42px` for buttons.
-*   **Safe Areas:** Always use `pb-safe` (padding-bottom: env(safe-area-inset-bottom)) for fixed footers.
-*   **Sticky Elements:** Headers and Action Footers should be `sticky` or `fixed` and SOLID.
+*   **Touch Targets:** Minimum height `40px` for tappable buttons.
+*   **Safe Areas:** Always use `pb-safe` and `pt-safe-top`.
+*   **Sticky Elements:** Headers are `sticky top-0`. Footers are `fixed bottom-0`.

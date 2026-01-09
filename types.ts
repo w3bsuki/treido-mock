@@ -28,6 +28,12 @@ export interface Category {
   name: string;
 }
 
+export interface CategoryNode {
+  id: string;
+  name: string;
+  items?: CategoryNode[];
+}
+
 export interface Filter {
   id: string;
   label: string;

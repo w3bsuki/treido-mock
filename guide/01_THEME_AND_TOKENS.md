@@ -5,7 +5,7 @@
 
 ## 1. Global CSS (app/globals.css)
 
-In Tailwind v4, we do not use `tailwind.config.js` for colors. We use CSS variables and the `@theme` directive.
+In Tailwind v4, we use `@theme` directive.
 
 **Copy this exactly into your `app/globals.css`:**
 
@@ -45,9 +45,6 @@ In Tailwind v4, we do not use `tailwind.config.js` for colors. We use CSS variab
   --accent: 96.8% 0.001 270;           /* Zinc 50 (Hover) */
   --accent-foreground: 21.6% 0.006 270;
 
-  --destructive: 59% 0.20 22;          /* Red 600 */
-  --destructive-foreground: 98.5% 0 0;
-
   /* Boundaries */
   --border: 92.5% 0.004 270;           /* Zinc 200 */
   --input: 92.5% 0.004 270;            /* Zinc 200 */
@@ -55,12 +52,6 @@ In Tailwind v4, we do not use `tailwind.config.js` for colors. We use CSS variab
 
   /* Geometry - The "Technical" Radius */
   --radius: 0.375rem; /* 6px - The Sweet Spot */
-}
-
-.dark {
-  /* Dark Mode Mappings (If needed later) */
-  --background: 21.6% 0.006 270;
-  --foreground: 98.5% 0 0;
 }
 
 @theme {
@@ -85,9 +76,6 @@ In Tailwind v4, we do not use `tailwind.config.js` for colors. We use CSS variab
   
   --color-accent: oklch(var(--accent));
   --color-accent-foreground: oklch(var(--accent-foreground));
-  
-  --color-destructive: oklch(var(--destructive));
-  --color-destructive-foreground: oklch(var(--destructive-foreground));
   
   --color-border: oklch(var(--border));
   --color-input: oklch(var(--input));

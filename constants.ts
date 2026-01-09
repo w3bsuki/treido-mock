@@ -1,4 +1,4 @@
-import { Category, Filter, Product } from './types';
+import { Category, CategoryNode, Filter, Product } from './types';
 
 export const CATEGORIES: Category[] = [
   { id: 'all', name: 'Всички' },
@@ -17,15 +17,34 @@ export const FASHION_GROUPS = [
     { id: 'kids', name: 'Деца' },
 ];
 
-// Deep Hierarchy: Gender -> Department -> Category
-export const FASHION_TREE: Record<string, { id: string; name: string; items: { id: string; name: string }[] }[]> = {
+// Deep Hierarchy: Gender -> Department -> Category -> SubCategory
+export const FASHION_TREE: Record<string, CategoryNode[]> = {
   women: [
     {
       id: 'clothing',
       name: 'Дрехи',
       items: [
-        { id: 'dresses', name: 'Рокли' },
-        { id: 'tops', name: 'Блузи & Ризи' },
+        { 
+            id: 'dresses', 
+            name: 'Рокли',
+            items: [
+                { id: 'daily', name: 'Ежедневни' },
+                { id: 'evening', name: 'Официални' },
+                { id: 'summer', name: 'Летни' },
+                { id: 'maxi', name: 'Дълги' },
+                { id: 'mini', name: 'Къси' }
+            ]
+        },
+        { 
+            id: 'tops', 
+            name: 'Блузи & Ризи',
+            items: [
+                { id: 'tshirts', name: 'Тениски' },
+                { id: 'shirts', name: 'Ризи' },
+                { id: 'tunics', name: 'Туники' },
+                { id: 'crop', name: 'Кроп-топ' }
+            ]
+        },
         { id: 'pants', name: 'Панталони & Дънки' },
         { id: 'skirts', name: 'Поли' },
         { id: 'outerwear', name: 'Якета & Палта' },
@@ -36,7 +55,16 @@ export const FASHION_TREE: Record<string, { id: string; name: string; items: { i
       id: 'shoes',
       name: 'Обувки',
       items: [
-        { id: 'sneakers', name: 'Сникърси' },
+        { 
+            id: 'sneakers', 
+            name: 'Сникърси',
+            items: [
+                { id: 'low', name: 'Ниски' },
+                { id: 'high', name: 'Високи' },
+                { id: 'platform', name: 'Платформи' },
+                { id: 'sport', name: 'За спорт' }
+            ]
+        },
         { id: 'boots', name: 'Боти & Ботуши' },
         { id: 'heels', name: 'Токове' },
         { id: 'sandals', name: 'Сандали' },
@@ -69,7 +97,15 @@ export const FASHION_TREE: Record<string, { id: string; name: string; items: { i
       name: 'Дрехи',
       items: [
         { id: 'tshirts', name: 'Тениски' },
-        { id: 'hoodies', name: 'Суичъри' },
+        { 
+            id: 'hoodies', 
+            name: 'Суичъри',
+            items: [
+                { id: 'zip', name: 'С цип' },
+                { id: 'pullover', name: 'Без цип' },
+                { id: 'fleece', name: 'Полар' }
+            ] 
+        },
         { id: 'pants', name: 'Панталони' },
         { id: 'jeans', name: 'Дънки' },
         { id: 'suits', name: 'Костюми' },

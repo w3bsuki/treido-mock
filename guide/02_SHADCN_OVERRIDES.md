@@ -9,29 +9,29 @@
 
 *   **Radius:** `rounded-md` (6px).
 *   **Variants:**
-    *   `default`: `bg-primary text-primary-foreground shadow-none hover:opacity-90 active:scale-[0.98]` (Micro-interaction only)
-    *   `outline`: `border border-border bg-background shadow-none hover:bg-accent hover:text-accent-foreground`
-    *   `secondary`: `bg-secondary text-secondary-foreground shadow-none hover:bg-secondary/80`
-    *   `ghost`: `hover:bg-accent hover:text-accent-foreground`
-*   **Height:** `h-10` (40px) is the standard.
-*   **Focus:** Remove `ring-offset`. Use `focus-visible:ring-1 focus-visible:ring-ring`.
+    *   `default`: `bg-zinc-900 text-white shadow-sm hover:bg-zinc-800 active:scale-[0.99]`
+    *   `outline`: `border border-zinc-200 bg-white hover:bg-zinc-50 text-zinc-900`
+    *   `secondary`: `bg-zinc-100 text-zinc-900 hover:bg-zinc-200`
+    *   `ghost`: `hover:bg-zinc-100 text-zinc-900`
+*   **Height:** `h-10` (40px) or `h-[44px]` (44px) for touch.
+*   **Focus:** Remove `ring-offset`. Use `focus-visible:ring-1 focus-visible:ring-zinc-900`.
 
 ## 2. Input (`components/ui/input.tsx`)
 
 **Goal:** Structured data entry. Distinct from the white surface.
 
-*   **Background:** `bg-secondary` (Zinc 50/100). This differentiates inputs from white cards.
-*   **Border:** `border-transparent` -> Focus `border-ring`.
+*   **Background:** `bg-zinc-50` (Zinc 50). This differentiates inputs from white cards.
+*   **Border:** `border-zinc-200` -> Focus `border-zinc-900`.
 *   **Radius:** `rounded-md` (6px).
-*   **Font Size:** `text-base` (16px) to prevent iOS zoom.
-*   **Height:** `h-11` or `h-12` for better touch area.
+*   **Font Size:** `text-[16px]` (16px) to prevent iOS zoom.
+*   **Height:** `h-[44px]` minimum.
 
 ## 3. Card (`components/ui/card.tsx`)
 
 **Goal:** Data containment.
 
-*   **Container:** `rounded-md border border-border bg-card text-card-foreground shadow-none`.
-*   **Padding:** Remove default large padding. Use utility classes `p-3` or `p-4` directly in the implementation.
+*   **Container:** `rounded-md border border-zinc-200 bg-white text-zinc-900 shadow-none`.
+*   **Padding:** Remove default large padding. Use utility classes `p-3` or `p-4` directly.
 *   **Shadow:** **FORBIDDEN**. Use Borders.
 
 ## 4. Sheet / Drawer
@@ -42,5 +42,5 @@
 
 ## 5. Separator
 
-*   **Color:** `bg-border`.
+*   **Color:** `bg-zinc-200`.
 *   **Usage:** Use frequently to divide lists instead of massive whitespace.
